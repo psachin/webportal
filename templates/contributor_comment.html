@@ -21,9 +21,9 @@
       				<div class="col-md-3" style= "margin-top:8%;background-color:#d5dce1"><br>
 				<strong>Welcome {{contributor.user.username}}</strong><br><br>
                                 {% if contributer.picture %}
-                                <img src="/media/{{contributor.picture}}" width=100px height=100px align="center">
+                                <img src="/media/{{contributor.picture}}" width=100px height=100px align="center"  class="img-responsive img-rounded">
 				{% else %}
-				<img src = "{% static 'img/default.png' %}" width=100px height=100px align="center">
+				<img src = "{% static 'img/default.png' %}" width=100px height=100px align="center"  class="img-responsive img-rounded">
 				{% endif %}
 				<br><br>
                                 <a href= "/contributor/upload/">Upload more </a><br><br>
