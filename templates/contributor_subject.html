@@ -7,15 +7,13 @@
    		 <div class="row">
       				<div class="col-md-8" style= " background-color:#d5dce1; margin-top:8%">
 				{% if uploads %}
-                                <h4>Subjects corresponding to class {{class_num}}</h4>
+                                <h3>Subjects corresponding to class {{class_num}}</h3>
 				<table class="table table-hover" id="uploads">	
 				{% for i in uploads %}
 				<table class="table table-hover">    				
-			        <td><h5><a href="/contributor/profile/{{class_num}}/{{i}}">{{i}}</a><hr>
-				</h5></td>
+			        <td><a href="/contributor/profile/{{class_num}}/{{i}}">{{i}}</a></td><hr>
 				{% endfor %}
 				</table>
-
 				<ul class="pagination" id="unordered-code-list"></ul> 
   			</div><div class="col-md-1"></div>
       				<div class="col-md-3" style= " background-color:#cad3d9; margin-top:8%"><br/>

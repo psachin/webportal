@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 # import the models here
 from django.contrib.auth.models import User
-from webapp.models import Contributor, Reviewer, Subject ,Comment, Language
+from webapp.models import Contributor, Reviewer, Subject ,Comment, Language,Class
 
 
 # import the forms here
@@ -25,10 +25,20 @@ def index(request):
     This function takes the request of client and direct it to home page.
     """
     context = RequestContext(request)
-    latest_uploads = Subject.objects.filter(review__gte = 3).order_by('-uploaded_on')[:3]
+    latest_uploads_all = Subject.objects.all()
+    no_class = Class.objects.all()
+    no_subject = Subject.objects.values_list('name',flat=True).distinct()
+    latest_uploads = Subject.objects.filter(review__gte = 3).order_by('-uploaded_on')[:5]
     print latest_uploads.query
+    count = len(latest_uploads_all)
+    count_subject = len(no_subject)
+    count_class = len(no_class)
     # print request.user.username
-    context_dict = {'latest_uploads': latest_uploads,
+    context_dict = {
+       'latest_uploads': latest_uploads,
+       'count' : count,
+       'count_subject' : count_subject,
+       'count_class': count_class
     } 
     return render_to_response("webapp/index.html", context_dict, context)
 
