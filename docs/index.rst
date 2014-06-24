@@ -4,13 +4,15 @@
    contain the root `toctree` directive.
 
 
-Welcome to webportal's documentation!
-=====================================
+Webportal
+=========
 
 Contents:
 
 .. toctree::
    :maxdepth: 2
+
+   userguide
 
    webapp
 

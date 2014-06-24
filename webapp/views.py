@@ -345,8 +345,20 @@ def contributor_signup(request):
     Argument:
 
     `REQUEST`: Request from contributor to sign up
-    
+
     This function is used for a new contributor to sign up.
+
+    `Usage`: ::
+
+        # Create an instance for UserForm() and ContributotForm()
+        user_form = UserForm(data=request.POST)
+        contributor_form = ContributorForm(data=request.POST)
+	if user_form.is_valid() and contributor_form.is_valid():
+	    user = user_form.save()
+            # do stuff
+        else:
+            # do stuff
+
     """
     context = RequestContext(request)
     registered = False
