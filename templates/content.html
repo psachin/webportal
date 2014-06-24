@@ -14,10 +14,10 @@
     </div>
     </form>
     <h1>{{Subject.name}}</h1>
-    {% if uploads %}
+   
     </div>
 </div>
-
+ {% if uploads %}
 <div class="table-responsive">
     <table class="table table-hover" id="uploads">
         <tr class="success">
@@ -80,9 +80,9 @@
   				<p>Nothing to display.</p>
   				{% endif %}
 
-	</div>
 
 
+</div>
 <script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
  var pager = new Pager('uploads', 6, 'unordered-code-list');

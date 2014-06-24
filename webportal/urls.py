@@ -57,7 +57,7 @@ urlpatterns = patterns(
 
     # this is used to display the content page of either the contributor or the reviewer
     url(r'^content/$','webapp.views.content'),
-    
+    url(r'^content/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/$','webapp.views.topic'),
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
