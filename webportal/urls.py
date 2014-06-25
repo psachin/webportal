@@ -49,8 +49,7 @@ urlpatterns = patterns(
     
 
     # this is for changing password, and for confirmation of that change
-    url(r'^user/password/change/$','django.contrib.auth.views.password_change'),
-    url(r'^user/password/change/done/$','django.contrib.auth.views.password_change_done'),
+    url(r'^user/password/change/$','webapp.views.password_change'),
 
     # this is for resetting password by sending an email, when a user forgets password
     url(r'^admin/password_reset/$','django.contrib.auth.views.password_reset',
