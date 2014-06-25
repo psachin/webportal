@@ -12,7 +12,7 @@
  			{% if uploads %}
 				<div class="table-responsive">
 				<table class="table table-hover" id="uploads">
-				<div class="nav nav-list">
+				
 				 <tr class="active">
     				    <td><strong>subject</strong></td>
     				    <td><strong>Topic</strong></td>
@@ -62,10 +62,12 @@
 				
 			         {% endfor %}
 				</table>
-                             <ul class="pagination" id="unordered-code-list"></ul> 
+                                 <ul class="pagination" id="unordered-code-list"></ul> 
 				{% else %}
   				<p>Nothing to display.</p>
   				{% endif %}
+                                 
+                            
     		
 			        </div></div>
                                  
@@ -94,7 +96,7 @@
 
 	</div>
   </div>
-   </div>
+ 
 
 
 <script src="{% static 'js/paging.js' %}"></script>
