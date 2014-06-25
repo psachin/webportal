@@ -38,7 +38,9 @@ def about(request):
 
     Argument:
 
-    `request`: This is the brief description about the site.
+    `request`: Request from client
+    This function takes the request of the client and direct it to the page
+consisting of the description about the site.
     """
     context = RequestContext(request)
     return render_to_response('about.html', context)
@@ -48,7 +50,9 @@ def contact(request):
     """Contact us page.
 
     Arguments:
-    - `request`:
+    `request`: Request from the client.
+    This function takes the request of the client and direct it to the contact
+us page.
     """
     context = RequestContext(request)
 
@@ -84,7 +88,9 @@ def userlogin(request):
     """
     Argument:
 
-    `request` : Request from the user to login
+    `request`: Request from the user to login
+    This function takes the request of the user and direct it to the login
+page.
     """
     context = RequestContext(request)
     if request.user.is_authenticated():
@@ -126,7 +132,7 @@ def contributor_profile(request):
     """
     Arguments:
 
-    `request` : Request from user
+    `request`: Request from user
 
     This function takes the request of user and direct it to profile page.
     """
@@ -149,7 +155,7 @@ def contributor_profile_subject(request, class_num):
 
     `request`: Request from user
 
-    `class_num` : Class in which the logged in contributor has contributed
+    `class_num`: Class in which the logged in contributor has contributed
 
     This function takes the request of user and direct it to profile page
 which consists of his contributions in a specific class.
@@ -231,14 +237,14 @@ def contributor_profile_topic_detail(request, class_num, sub, topics, id):
 
     `request`: Request from user.
 
-    `class_num` : Class in which the logged in contributor has contributed.
+    `class_num`: Class in which the logged in contributor has contributed.
 
-    `sub` : Subject in which the logged in contributor has contributed.
+    `sub`: Subject in which the logged in contributor has contributed.
 
-    `topics` : Subject topic in which the logged in contributor has
+    `topics`: Subject topic in which the logged in contributor has
 contributed.
 
-    `id` : Id of the subject in which the logged in contributor has
+    `id`: Id of the subject in which the logged in contributor has
 contributed.
 
     This function takes the request of user and direct it to profile page which
@@ -266,14 +272,14 @@ def reviewer_profile_topic_detail(request, class_num, sub, topics, id):
 
     `request`: Request from user.
 
-    `class_num` : Class in which the logged in contributor has contributed.
+    `class_num`: Class in which the logged in contributor has contributed.
 
-    `sub` : Subject in which the logged in contributor has contributed.
+    `sub`: Subject in which the logged in contributor has contributed.
 
-    `topics` : Subject topic in which the logged in contributor has
+    `topics`: Subject topic in which the logged in contributor has
 contributed.
 
-    `id` : Id of the subject in which the logged in contributor has
+    `id`: Id of the subject in which the logged in contributor has
 contributed.
 
     This function takes the request of user and direct it to profile page which
@@ -318,7 +324,7 @@ def reviewer_profile_subject(request, class_num):
     """
     Arguments:
 
-    `request`: Request from user
+    `request`: Request from user.
 
     `class_num` : Class in which the contributor has contributed.
 
@@ -346,7 +352,7 @@ def reviewer_profile_topic(request, class_num, sub):
 
     `class_num` : Class in which the contributor has contributed.
 
-    `sub` : subject in which the contributor has contributed
+    `sub`: subject in which the contributor has contributed.
 
     This function takes the request of user and directs it to the profile page
 which consists of the contributor's contributions in a specific subject of a
@@ -379,13 +385,13 @@ def reviewer_profile_comment(request, class_num, sub, topics, id):
 
     `request`: Request from user.
 
-    `class_num` : Class in which the contributor has contributed.
+    `class_num`: Class in which the contributor has contributed.
 
-    `sub` : Subject in which the contributor has contributed.
+    `sub`: Subject in which the contributor has contributed.
 
-    `topics` : Topic on which reviewer commented.
+    `topics`: Topic on which reviewer commented.
 
-    `id` : Id of the reviewer.
+    `id`: Id of the reviewer.
 
     This function takes the request of user and directs it to the profile page
 which consists of the contributor's contributions in a specific subject of a
@@ -608,23 +614,22 @@ def contributor_upload(request):
             subject = contributor_upload_form.save(commit=False)
             if ('pdf' not in request.FILES
                 and 'animation' not in request.FILES
-                and 'video' not in request.FILES):	 
-	    	# Bad upload details were provided.
-            	messages.error(request, "need to provide atleast one upload")
-		contributor_upload_form = ContributorUploadForm()
-		context_dict = {
-	        'contributor_upload_form': contributor_upload_form,
-	        'uploaded': uploaded
-   		}
-		return render_to_response("upload.html", context_dict, context)
-	    else:	
-	    	if 'pdf' in request.FILES:
-                    subject.pdf=request.FILES['pdf']
-         	if 'video' in request.FILES:
-               	    subject.video = request.FILES['video']
-           	if 'animation' in request.FILES:
-		    subject.animation = request.FILES['animation']
-	    contributor = Contributor.objects.get(user=request.user)
+                    and 'video' not in request.FILES):
+                # Bad upload details were provided.
+                messages.error(request, "need to provide atleast one upload")
+                contributor_upload_form = ContributorUploadForm()
+                context_dict = {
+                    'contributor_upload_form': contributor_upload_form,
+                    'uploaded': uploaded}
+                return render_to_response("upload.html", context_dict, context)
+            else:
+                if 'pdf' in request.FILES:
+                    subject.pdf = request.FILES['pdf']
+                if 'video' in request.FILES:
+                    subject.video = request.FILES['video']
+                if 'animation' in request.FILES:
+                    subject.animation = request.FILES['animation']
+            contributor = Contributor.objects.get(user=request.user)
             subject.contributor = contributor
 
             subject.save()
@@ -645,16 +650,15 @@ def contributor_upload(request):
 
     return render_to_response("upload.html", context_dict, context)
 
-	
+
 @login_required
 def contributor_profile_edit(request):
     """
     Argument:
 
-    `REQUEST`: Contributor to edit his profile
-    
+    `request`: Request form contributor to edit his profile.
+
     Edit user's/Coordinators profile.
-    
     """
     context = RequestContext(request)
     print request.user
@@ -665,18 +669,19 @@ def contributor_profile_edit(request):
     contributor = get_object_or_404(Contributor, user=request.user)
     if request.method == 'POST':
         print "We've a request to register"
-        contributorform = ContributorForm(data=request.POST, instance=contributor)
+        contributorform = ContributorForm(data=request.POST,
+                                          instance=contributor)
         userform = UserForm(data=request.POST, instance=user)
         if contributorform.is_valid() and userform.is_valid():
             print "Forms are Valid"
             user = userform.save(commit=False)
             if old_username != user.username:
-                messages.error(request,'Username cant be changed')
+                messages.error(request, 'Username cant be changed')
                 context_dict = {
                     'contributorform': contributorform,
                     'userform': userform
                 }
-                return render_to_response('contributor_profile_edit.html', 
+                return render_to_response('contributor_profile_edit.html',
                                           context_dict, context)
             user.set_password(user.password)
             user.save()
@@ -684,17 +689,17 @@ def contributor_profile_edit(request):
             if 'picture' in request.FILES:
                 contributor.picture = request.FILES['picture']
             contributor.user = User.objects.get(username=user.username)
-            contributor.save()            
+            contributor.save()
             messages.success(request, "Profile updated successfully.")
-            return render_to_response("edit_success.html",context)
+            return render_to_response("edit_success.html", context)
         else:
             if contributorform.errors or userform.errors:
                 print contributorform.errors, userform.errors
     else:
         contributorform = ContributorForm(instance=contributor)
         userform = UserForm(instance=user)
-    context_dict = {'contributorform': contributorform,'userform': userform}
-    return render_to_response('contributor_profile_edit.html', 
+    context_dict = {'contributorform': contributorform, 'userform': userform}
+    return render_to_response('contributor_profile_edit.html',
                               context_dict, context)
 
 
@@ -703,8 +708,8 @@ def reviewer_profile_edit(request):
     """
     Argument:
 
-    `request`: Reviewer to edit his profile.
-    
+    `request`: Request from reviewer to edit his profile.
+
     Edit user's/Reviewer's profile.
     """
     context = RequestContext(request)
@@ -722,10 +727,10 @@ def reviewer_profile_edit(request):
             print "Forms are Valid"
             user = userform.save(commit=False)
             if old_username != user.username:
-                messages.error(request,'Username cant be changed')
+                messages.error(request, 'Username cant be changed')
                 context_dict = {'reviewerform': reviewerform,
-                    		'userform': userform}
-                return render_to_response('reviewer_profile_edit.html', 
+                                'userform': userform}
+                return render_to_response('reviewer_profile_edit.html',
                                           context_dict, context)
             user.set_password(user.password)
             user.save()
@@ -733,9 +738,9 @@ def reviewer_profile_edit(request):
             if 'picture' in request.FILES:
                 reviewer.picture = request.FILES['picture']
             reviewer.user = User.objects.get(username=user.username)
-            reviewer.save()         
+            reviewer.save()
             messages.success(request, "Profile updated successfully.")
-            return render_to_response("edit_success.html",context)
+            return render_to_response("edit_success.html", context)
         else:
             if reviewerform.errors or userform.errors:
                 print reviewerform.errors, userform.errors
@@ -745,38 +750,41 @@ def reviewer_profile_edit(request):
 
     context_dict = {'reviewerform': reviewerform,
                     'userform': userform}
-    return render_to_response('reviewer_profile_edit.html', 
+    return render_to_response('reviewer_profile_edit.html',
                               context_dict, context)
 
 
-def content(request,lang):
+def content(request, lang):
     """
     Argument:
 
-    `request`: This requests the particular content. 
+    `request`: This requests the particular content.
 
     `lang`: This indicates the language of the contents.
     """
     context = RequestContext(request)
     contributor = Contributor.objects.all()
-    uploads = Subject.objects.all().filter(review__gte = 3).filter(language__language=lang).order_by('class_number')
+    filter_review = Subject.objects.all().filter(review__gte=3)
+    filter_lang = filter_review.filter(language__language=lang)
+    uploads = filter_lang.order_by('class_number')
     context_dict = {
         'uploads': uploads,
-        'contributor':contributor,
-	'lang':lang
+        'contributor': contributor,
+        'lang': lang,
     }
     return render_to_response('content.html', context_dict, context)
+
 
 def language_select(request):
     """
     Argument:
 
-    `request`: This requests the particular content. 
+    `request`: This requests the particular content.
     """
     context = RequestContext(request)
     languages = Language.objects.values_list('language', flat=True)
     context_dict = {
-        'languages' : languages }
+        'languages': languages}
     return render_to_response('language_select.html', context_dict, context)
 
 
@@ -784,26 +792,32 @@ def search(request, lang):
     """
     Argument:
 
-    `request`: This requests the searched content. 
+    `request`: This requests the searched content.
 
     `lang`: This indicates the language of the searched contents.
-    """	
+    """
     context = RequestContext(request)
     try:
         user = User.objects.get(username=request.user.username)
     except:
-       	user = None
-	query = request.GET['q']
-	results_topic = Subject.objects.filter(topic__icontains=query).filter(language__language=lang).filter(review__gte = 3).order_by('class_number')
-	results_name = Subject.objects.filter(name__icontains=query).filter(language__language=lang).filter(review__gte = 3).order_by('class_number')
-	template = loader.get_template('search.html')
-	context = Context({'query': query ,
-	                   'results_topic': results_topic,
-	                   'results_name': results_name,
-	                   'lang': lang,
-	                   'user':user})
-	response = template.render(context)
-	return HttpResponse(response)
+        user = None
+        query = request.GET['q']
+        filter_query = Subject.objects.filter(topic__icontains=query)
+        filter_lang = filter_query.filter(language__language=lang)
+        filter_review = filter_lang.filter(review__gte=3)
+        results_topic = filter_review.order_by('class_number')
+        filter_query = Subject.objects.filter(name__icontains=query)
+        filter_lang = filter_query.filter(language__language=lang)
+        filter_review = filter_lang.filter(review__gte=3)
+        results_name = filter_review.order_by('class_number')
+        template = loader.get_template('search.html')
+        context = Context({'query': query,
+                           'results_topic': results_topic,
+                           'results_name': results_name,
+                           'lang': lang,
+                           'user': user})
+        response = template.render(context)
+        return HttpResponse(response)
 
 
 def edit_success(request):
@@ -811,8 +825,7 @@ def edit_success(request):
     Argument:
 
     `request`: This function redirects the page to edit_success.html page.
-    
+
     Editing user's/Reviewer's profile is successful.
     """
     return render_to_response('edit_success.html')
-
