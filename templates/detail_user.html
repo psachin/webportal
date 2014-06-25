@@ -6,7 +6,7 @@
 .pic img:hover { opacity: 1; width:125px ; height:125px ;} 
 </style>
 <div class="container" style= "padding-top: 5%; padding-bottom:5% ;margin-top:8%">
-  <h1>contributors</h1>
+  <h1>Panel of contributors</h1>
   <hr>
   <div class="row">
   {% for i in contributor %}
@@ -20,6 +20,19 @@
     </div>  <div class="col-md-1"></div>
   {% endfor %}  
   </div>
+ <h1>Panel of  Reviewer</h1>
+  <hr>
+  <div class="row">
+  {% for i in reviewer %}
+    <div class="col-md-2 pic" style="width:180px ; height:180px">
+      {% if i.picture %}
+    <img src="/media/{{i.picture}}" class="img-circle img-responsive"  />
+       {% else %}
+    <img src="{% static 'img/default.png' %}" class="img-circle img-responsive" />
+     {% endif %}
+    <br><p class="text-info">{{i.user.username}}{{i.Date}}</p><br>
+    </div>  <div class="col-md-1"></div>
+  {% endfor %}  
+  </div>
 </div>
-  
  {% endblock content %}
