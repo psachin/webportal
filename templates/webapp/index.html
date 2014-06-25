@@ -2,7 +2,10 @@
 {% load static %}
 
 {% block content %}
-
+<style type="text/css"> 
+.pic{ width:14%; height:14%; opacity: 1;  } 
+.pic:hover { opacity: 1; width:17% ; height:17% ; background-color:#D8D8D8} 
+</style> 
 <!-- Carousel
     ================================================== -->
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -39,28 +42,32 @@
       <a class="left carousel-control" href="http://getbootstrap.com/examples/carousel/#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
       <a class="right carousel-control" href="http://getbootstrap.com/examples/carousel/#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
     </div><!-- /.carousel -->
-<div class="container-fluid"  style=" padding-left:10px>
+<div class="container"  style=" padding-left:10px ; padding-top:0px">
 <div class="row">
-<div class="col-md-12" style=" padding-left:10px ; font-family:Comic Sans MS"><p class="text-info"><em>This website is intended to provide free study material to school students .People from around the world may upload their content after signing up.ASE does not require any registration and is not a degree-granting or certificate-granting activity rather it is instead an effort to share knowledge and make sure the students have access to world class education content making full use of the Internet's potential.</em></p></div></div>
+<div class="col-md-12" style=" padding-left:10px ;"><p class="text-info" style="font-size:23px ; font-family:verdana"><em>This website is intended to provide free study material to school students .People from around the world may upload their content after signing up.ASE does not require any registration and is not a degree-granting or certificate-granting activity rather it is instead an effort to share knowledge and make sure the students have access to world class education content making full use of the Internet's potential.</em></p></div></div>
 <div class="row">
   
-  <div class="col-md-8" style="padding-top:10px ; padding-left:50px"><h3>Latest Uploads</h3><br>
-	<marquee scrollamount="2" direction="up" loop="true" onmouseover="this.stop();" onmouseout="this.start();">
+
+
+  <div class="col-md-5" style="padding-top:1% ;padding-left:2% ; margin-bottom:5%"><h3><center>Latest Uploads</center></h3><br>
+	<marquee scrollamount="2" direction="up" loop="true" width="400px" onmouseover="this.stop();" onmouseout="this.start();" >
 	{% for i in latest_uploads %}
-        <div class="table-responsive">
-	<table class="table table-hover">
+        <table class="table table-hover">
 	<tr class="active">
-		<td><a href="/content/{{i.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/">{{i.topic}}</a></td>
-		</tr>
-				
-			         {% endfor %}
-				</table></div></marquee>
-			        </div>
+		<td><a href="/content/{{i.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}"><strong>{{i.topic|safe|capfirst}} ({{i.name|capfirst}}, Class:{{i.class_number}})</strong></a></td>
+	</tr>   	</table>
+	{% endfor %}</marquee></div>
+ 
+<div class="col-md-2 pic" style="padding-top:1% ; ">
+	<center><h3>classes</h3><h2> {{count_class}}</h2></center></div>
 
+  <div class="col-md-2 pic" style="padding-top:1% ;">
+	<center><h3> Subjects </h3><h2>{{count_subject}}</h2></center> </div>
 
-  <div class="col-md-4"style="padding-top:30px ; padding-left:50px">Contact us
+  <div class="col-md-2 pic" style="padding-top:1% ;">
+	<center> <h3>uploads</h3><h2>{{count}}</h2></center></p>
+  </div>
+  </div>
+  </div>
 
-</div>
-</div>
-</div>
 {% endblock content %}

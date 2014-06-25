@@ -44,17 +44,17 @@
 				    
 				    {% if i.pdf %}
 				   
-				      <a href="/media/{{i.pdf}}"><i class="fa fa-file-pdf-o fa-2x"></i></a>
-			            {% else %}
+				      <a href="/media/{{i.pdf}}" target="blank"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+			            {% else %}<i class="fa fa-ban fa-2x"></i>
 				    {% endif %}	</td><td>
 				    {% if i.video %}
-					<a href="/media/{{i.video}}"><i class="fa fa-file-video-o fa-2x"></i></a>
-					{% else %}
+					<a href="/media/{{i.video}}" target="blank"><i class="fa fa-file-video-o fa-2x"></i></a>
+					{% else %}<i class="fa fa-ban fa-2x"></i>
 				    {% endif %}	</td><td>
 				    {% if i.animation %}
-					<a href="/media/{{i.animation}}"><i class="fa fa-file-image-o fa-2x"></i></a>
+					<a href="/media/{{i.animation}}" target="blank"><i class="fa fa-file-image-o fa-2x"></i></a>
 					
-				    {% else %}
+				    {% else %}<i class="fa fa-ban fa-2x"></i>
 				    {% endif %}	
 				       
 				</td>         
@@ -77,10 +77,10 @@
       				<div class="col-md-1"></div>
       				<div class="col-md-3" style= " background-color:#cad3d9; margin-top:8%"><br/>
 				<strong>Welcome {{contributor.user.username}}</strong><br><br>
-                                {% if contributer.picture %}
-                                <img src="/media/{{contributor.picture}}" width=100px height=100px align="center">
+                                {% if contributor.picture %}
+                                <img src="/media/{{contributor.picture}}" width=100px height=100px align="center"  class="img-responsive img-rounded">
 				{% else %}
-				<img src = "{% static 'img/default.png' %}" width=100px height=100px align="center">
+				<img src = "{% static 'img/default.png' %}" width=100px height=100px align="center"  class="img-responsive img-rounded">
 				{% endif %}
 				<br><br>
                                 <a href= "/contributor/upload/">Upload more </a><br><br>
