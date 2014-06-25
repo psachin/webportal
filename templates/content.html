@@ -7,7 +7,7 @@
 <div class="col-md-12 well">
     <table class="table-responsive">
     <h1>{{Subject.name}}</h1>
-    {% if uploads %}
+   
     </div>
 </div>
 
@@ -19,6 +19,7 @@
 		</form>
 		<div class="tfclear"></div>
 	
+{% if uploads %}
 <div class="table-responsive">
     <table class="table table-hover" id="uploads">
         <tr class="success">
@@ -54,9 +55,9 @@
                     </td>
                     {% endif %}
                     
-                    <td>
-                      {{i.summary|safe|linebreaks}}
-                    </td>
+                    <td class="lead" text-align="justify">
+                      {{i.summary|safe|linebreaks|truncatewords:10}}
+               </td>
                     
                     <td>
                     {% if i.pdf %}
@@ -80,7 +81,9 @@
   				<p>Nothing to display.</p>
   				{% endif %}
 
+
 	</div>
+
 <script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
  var pager = new Pager('uploads', 6, 'unordered-code-list');

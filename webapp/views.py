@@ -295,6 +295,27 @@ specific class.
     return render_to_response('contributor_topic_detail.html',
                               context_dict, context)
 
+def topic(request,class_num,sub,topics,id):
+    """
+    Arguments:
+
+    `REQUEST`: Request from user.
+
+    `CLASS_NUM` : Class in which the logged in contributor has contributed.
+
+    `SUB` : Subject in which the logged in contributor has contributed.
+
+    `TOPICS` : Subject topic in which the logged in contributor has contributed.
+
+    `ID` : Id of the subject in which the logged in contributor has contributed.
+
+    This function takes the request of user and direct it to profile page which consists of details of a specified topic of a subject of a specific class.
+    """
+    context = RequestContext(request)
+    subject = Subject.objects.get(id=id)
+    context_dict = {'subject': subject, 'class_num':class_num, 'sub':sub,'topics':topics,'id':id}
+    return render_to_response('topic.html', context_dict, context)
+
 
 def reviewer_profile_topic_detail(request, class_num, sub, topics, id):
     """
