@@ -136,6 +136,25 @@ page.
         else:
             return render_to_response('webapp/login.html', context)
 
+def password_change(request):
+    context = RequestContext(request)
+    user = User.objects.get(username=request.user.username)
+    if request.method == 'POST':
+        if user.check_password(request.POST['old_pwd']):
+            if request.POST['new_pwd'] == request.POST['new_again_pwd']:
+                user.set_password(request.POST['new_pwd'])
+		user.save()
+                messages.success(request, "Password Changed")
+		return render_to_response('password_change.html',context)
+            else:
+                messages.error(request, "Passwords doesn't match")
+		return render_to_response('password_change.html',context)		
+        else:
+            messages.error(request, "Incorrect Password")
+	    return render_to_response('password_change.html',context)
+    else:
+        return render_to_response('password_change.html', context)
+    
 
 def contributor_profile(request):
     """
@@ -703,7 +722,6 @@ def contributor_profile_edit(request):
             contributor.user = User.objects.get(username=user.username)
             contributor.save()
             messages.success(request, "Profile updated successfully.")
-            return render_to_response("edit_success.html", context)
         else:
             if contributorform.errors or userform.errors:
                 print contributorform.errors, userform.errors
@@ -752,7 +770,6 @@ def reviewer_profile_edit(request):
             reviewer.user = User.objects.get(username=user.username)
             reviewer.save()
             messages.success(request, "Profile updated successfully.")
-            return render_to_response("edit_success.html", context)
         else:
             if reviewerform.errors or userform.errors:
                 print reviewerform.errors, userform.errors
@@ -830,17 +847,6 @@ def search(request, lang):
                            'user': user})
         response = template.render(context)
         return HttpResponse(response)
-
-
-def edit_success(request):
-    """
-    Argument:
-
-    `request`: This function redirects the page to edit_success.html page.
-
-    Editing user's/Reviewer's profile is successful.
-    """
-    return render_to_response('edit_success.html')
 
 
 def detail_user(request):
