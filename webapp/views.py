@@ -459,6 +459,30 @@ which consists of the reviewer's past approvals.
                               context_dict, context)
 
 
+def topic(request, class_num, sub, topics, id):
+    """
+    Arguments:
+
+    `request`: Request from user.
+
+    `class_num`: Class in which the logged in contributor has contributed.
+
+    `sub`: Subject in which the logged in contributor has contributed.
+
+    `topics`: Subject topic in which the logged in contributor has contributed.
+
+    `id`: Id of the subject in which the logged in contributor has contributed.
+
+    This function takes the request of user and direct it to profile page which
+consists of details of a specified topic of a subject of a specific class.
+    """
+    context = RequestContext(request)
+    subject = Subject.objects.get(id=id)
+    context_dict = {'subject': subject, 'class_num': class_num,
+                    'sub': sub, 'topics': topics, 'id': id}
+    return render_to_response('topic.html', context_dict, context)
+
+
 def contributor_signup(request):
     """
     Argument:
