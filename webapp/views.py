@@ -10,14 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 # import the models here
 from django.contrib.auth.models import User
-<<<<<<< HEAD
 from webapp.models import Contributor, Reviewer, Subject ,Comment, Language,Class
-=======
-from webapp.models import Contributor, Reviewer, Subject
-from webapp.models import Comment, Language, Class
->>>>>>> 8d55c7ad5c1a8612ab23c89b76d3d653f7c032d0
-
-
 # import the forms here
 from webapp.forms import ContributorForm, ReviewerForm, UserForm
 from webapp.forms import ContactForm, ContributorUploadForm, CommentForm
@@ -848,3 +841,19 @@ def edit_success(request):
     Editing user's/Reviewer's profile is successful.
     """
     return render_to_response('edit_success.html')
+
+
+def detail_user(request):
+   """
+   Argument:
+
+   `request`: This function redirects to the page having detailed information of contributor and reviewer
+   """
+   context = RequestContext(request)
+   contributor = Contributor.objects.all()
+   print contributor[0].picture
+   reviewer = Reviewer.objects.all()
+   context_dict = {'contributor': contributor,
+                   'reviewer': reviewer,
+		  }
+   return render_to_response('detail_user.html',context_dict,context)
