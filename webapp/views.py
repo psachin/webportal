@@ -10,10 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 # import the models here
 from django.contrib.auth.models import User
-from webapp.models import Contributor, Reviewer, Subject
-from webapp.models import Comment, Language, Class
-
-
+from webapp.models import Contributor, Reviewer, Subject ,Comment, Language,Class
 # import the forms here
 from webapp.forms import ContributorForm, ReviewerForm, UserForm
 from webapp.forms import ContactForm, ContributorUploadForm, CommentForm
@@ -850,3 +847,19 @@ def search(request, lang):
                            'user': user})
         response = template.render(context)
         return HttpResponse(response)
+
+
+def detail_user(request):
+   """
+   Argument:
+
+   `request`: This function redirects to the page having detailed information of contributor and reviewer
+   """
+   context = RequestContext(request)
+   contributor = Contributor.objects.all()
+   print contributor[0].picture
+   reviewer = Reviewer.objects.all()
+   context_dict = {'contributor': contributor,
+                   'reviewer': reviewer,
+		  }
+   return render_to_response('detail_user.html',context_dict,context)

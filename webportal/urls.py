@@ -56,6 +56,7 @@ urlpatterns = patterns(
 
     # this is used to display the content page of either the contributor or the reviewer
     url(r'^content/(?P<lang>[\w ]+)/$','webapp.views.content'),
+    url(r'^user_detail/$','webapp.views.detail_user'),
     # this is used for selecting language of the contents
     url(r'^language/$','webapp.views.language_select'),
     
