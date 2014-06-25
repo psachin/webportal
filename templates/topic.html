@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container" style= "padding-top: 5%; padding-bottom:5%">
+   		 <div class="row">
+      				<div class="col-md-8" style= " background-color:#d5dce1; margin-top:8%">
+				<h4> {{topics}} ({{sub}})</h4>
+                                <h6> Class: {{class_num}}</h6></div></div><br>
+				<div class="row">
+				<div class="col-md-8">
+				<blockquote>
+				<p>{{subject.summary|safe|linebreaks}}</p>
+				<footer><strong>{{ subject.contributor}}</strong></footer>
+                                </blockquote>
+                                </div>
+                                     <div class="col-md-1"></div>
+                                     <div class="col-md-3" style="background-color:#cad3d9">
+				     <h4>Downloads</h4>
+				     <div class="table-responsive">
+			        <table class="table table-hover">
+				 <tr class="active">
+    				    <td><strong>PDF</strong></td>
+    				    <td><strong>Video</strong></td>
+			            <td><strong>Animation</strong></td>
+				 </tr>
+                                      <tr class="active"> 
+                                     {% if subject.pdf %}
+				    
+				    <td><a href="/media/{{subject.pdf}}"><i class="fa fa-file-pdf-o fa-3x"></i></a>
+			            {% else %}
+				    <td><i class="fa fa-ban fa-3x"></i></td>
+				    {% endif %}</td>	
+				    {% if subject.video %}
+				    <td><a href="/media/{{subject.video}}"><i class="fa fa-file-video-o fa-3x"></i></a>
+					{% else %}
+				    <td><i class="fa fa-ban fa-3x"></i></td>
+				    {% endif %}</td>	
+				    {% if subject.animation %}
+				    <td><a href="/media/{{subject.animation}}"><i class="fa fa-file-image-o fa-3x"></i></a>
+					
+				    {% else %}
+				    <td><i class="fa fa-ban fa-3x"></i></td>
+				    {% endif %}</td>
+				    </tr>
+                                  </table>
+                                     </div>
+
+				</div>
+				
+                            </div>
+    			</div>
+ 
+{% endblock content %}
