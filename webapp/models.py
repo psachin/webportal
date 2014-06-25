@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import RegexValidator
 
 
 class Contributor(models.Model):
@@ -123,8 +124,16 @@ used to refer to the language in which the contributor is contributing.
 
     """
     contributor = models.ForeignKey(Contributor)
-    name = models.CharField(max_length=50)
-    topic = models.CharField(max_length=200)
+    name = models.CharField(
+        max_length=50,
+        validators=[RegexValidator(regex=r'^[a-zA-Z ]*$',
+                    message='Special Characters are not allowed',
+                    code='nnomatch')])
+    topic = models.CharField(
+        max_length=200,
+        validators=[RegexValidator(regex=r'^[a-zA-Z ]*$',
+                    message='Special Characters are not allowed',
+                    code='nnomatch')])
     class_number = models.ForeignKey(Class)
     pdf = models.FileField(upload_to='pdf', blank=True)
     video = models.FileField(upload_to='video', blank=True)

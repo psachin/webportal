@@ -10,7 +10,8 @@ from django.contrib.auth.decorators import login_required
 
 # import the models here
 from django.contrib.auth.models import User
-from webapp.models import Contributor, Reviewer, Subject, Comment, Language
+from webapp.models import Contributor, Reviewer, Subject
+from webapp.models import Comment, Language, Class
 
 
 # import the forms here
@@ -27,9 +28,20 @@ def index(request):
     This function takes the request of client and direct it to home page.
     """
     context = RequestContext(request)
-    uploads = Subject.objects.filter(review__gte=3)
-    latest_uploads = uploads.order_by('-uploaded_on')[:3]
-    context_dict = {'latest_uploads': latest_uploads}
+    latest_uploads_all = Subject.objects.all()
+    num_class = Class.objects.all()
+    num_subject = Subject.objects.values_list('name', flat=True).distinct()
+    filter_review = Subject.objects.filter(review__gte=3)
+    latest_uploads = filter_review.order_by('-uploaded_on')[:5]
+    count = len(latest_uploads_all)
+    count_subject = len(num_subject)
+    count_class = len(num_class)
+    context_dict = {
+        'latest_uploads': latest_uploads,
+        'count': count,
+        'count_subject': count_subject,
+        'count_class': count_class
+    }
     return render_to_response("webapp/index.html", context_dict, context)
 
 
@@ -138,10 +150,10 @@ def contributor_profile(request):
     """
     context = RequestContext(request)
     contributor = Contributor.objects.get(user=request.user)
-    subject = Subject.objects.values_list(
+    filter_class = Subject.objects.values_list(
         'class_number__class_number',
-        flat=True)
-    uploads = subject.filter(contributor__user=request.user).distinct()
+        flat=True).order_by('class_number')
+    uploads = filter_class.filter(contributor__user=request.user).distinct()
     context_dict = {
         'uploads': uploads,
         'contributor': contributor
@@ -162,9 +174,10 @@ which consists of his contributions in a specific class.
     """
     context = RequestContext(request)
     contributor = Contributor.objects.get(user=request.user)
-    filter_sub = Subject.objects.values_list('name', flat=True)
+    filter_sub = Subject.objects.values_list('name', flat=True).distinct()
     filter_class = filter_sub.filter(class_number__class_number=class_num)
-    uploads = filter_class.filter(contributor__user=request.user).distinct()
+    uploads = filter_class.filter(contributor__user=request.user)
+    uploads = uploads.order_by('name')
     context_dict = {
         'uploads': uploads,
         'class_num': class_num,
@@ -192,6 +205,7 @@ which consists of his contributions in a specific subject of a  specific class.
     filter_class = Subject.objects.filter(class_number__class_number=class_num)
     filter_sub = filter_class.filter(name=sub)
     uploads = filter_sub.filter(contributor__user=request.user)
+    uploads = uploads.order_by('topic')
     context_dict = {
         'uploads': uploads,
         'class_num': class_num,
@@ -218,7 +232,7 @@ class.
     """
     context = RequestContext(request)
     contributor = Contributor.objects.get(user=request.user)
-    comment = Comment.objects.filter(subject_id=id)
+    comment = Comment.objects.filter(subject_id=id).order_by('-submit_date')
     context_dict = {
         'comment': comment,
         'class_num': class_num,
@@ -314,7 +328,7 @@ def reviewer_profile(request):
     reviewer = Reviewer.objects.get(user=request.user)
     filter_class = Subject.objects.values_list(
         'class_number__class_number',
-        flat=True)
+        flat=True).order_by('class_number')
     uploads = filter_class.filter(review__lt=3).distinct()
     context_dict = {'uploads': uploads, 'reviewer': reviewer}
     return render_to_response("reviewer.html", context_dict, context)
@@ -333,9 +347,9 @@ which consists of the contributor's contributions in a specific class.
     """
     context = RequestContext(request)
     reviewer = Reviewer.objects.get(user=request.user)
-    filter_sub = Subject.objects.values_list('name', flat=True)
+    filter_sub = Subject.objects.values_list('name', flat=True).distinct()
     filter_class = filter_sub.filter(class_number__class_number=class_num)
-    uploads = filter_class.filter(review__lt=3).distinct()
+    uploads = filter_class.filter(review__lt=3).order_by('name')
     context_dict = {
         'uploads': uploads,
         'class_num': class_num,
@@ -370,6 +384,7 @@ specific class.
         print subject.id
     filter_sub = Subject.objects.filter(class_number__class_number=class_num)
     uploads = filter_sub.filter(name=sub).filter(review__lt=3)
+    uploads = uploads.order_by('topic')
     context_dict = {
         'uploads': uploads,
         'class_num': class_num,
@@ -398,7 +413,7 @@ which consists of the contributor's contributions in a specific subject of a
 specific class.
     """
     context = RequestContext(request)
-    comment = Comment.objects.filter(subject_id=id)
+    comment = Comment.objects.filter(subject_id=id).order_by('-submit_date')
     reviewer = Reviewer.objects.get(user=request.user)
     if request.method == 'POST':
         print "we have a new comment"
