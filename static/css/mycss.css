@@ -3,7 +3,37 @@
 }
 .required input, .required select{
     border: 2px red solid
+}
 .container
 {
 background-color:"grey"
 }  
+	#tfnewsearch{
+		float:right;
+		padding:20px;
+	}
+	.tftextinput4{
+		margin: 0;
+		padding: 6px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:16px;
+		color:#666;
+		border:1px solid #0076a3; border-right:1px solid #0076a3;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;	
+	}
+.tftextinput5{
+		margin: 0;
+		padding: 6px 15px;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size:14px;
+		color:#666;
+		border:1px solid #0076a3; border-right:1px solid #0076a3;
+		border-top-left-radius: 5px 5px;
+		border-bottom-left-radius: 5px 5px;
+		border-top-right-radius: 5px 5px;
+		border-bottom-right-radius: 5px 5px;	
+	}
+
