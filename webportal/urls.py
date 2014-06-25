@@ -55,6 +55,9 @@ urlpatterns = patterns(
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # this is used to display the content page of either the contributor or the reviewer
+
+    url(r'^content/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/$','webapp.views.topic'),
+
     url(r'^content/(?P<lang>[\w ]+)/$','webapp.views.content'),
     url(r'^user_detail/$','webapp.views.detail_user'),
     # this is used for selecting language of the contents
