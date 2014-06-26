@@ -9,6 +9,7 @@
   <h1>Panel of contributors</h1>
   <hr>
   <div class="row">
+  {% if contributor %}
   {% for i in contributor %}
     <div class="col-md-2 pic" style="width:180px ; height:180px">
       {% if i.picture %}
@@ -18,11 +19,15 @@
      {% endif %}
     <br><p class="text-info">{{i.user.username}}{{i.Date}}</p><br>
     </div>  <div class="col-md-1"></div>
-  {% endfor %}  
+  {% endfor %}
+  {% else %}
+  <h3>No contributor.</h3>
+  {% endif %}
   </div>
- <h1>Panel of  Reviewer</h1>
+ <h1>Panel of Reviewer</h1>
   <hr>
   <div class="row">
+  {% if reviewer %}
   {% for i in reviewer %}
     <div class="col-md-2 pic" style="width:180px ; height:180px">
       {% if i.picture %}
@@ -32,7 +37,10 @@
      {% endif %}
     <br><p class="text-info">{{i.user.username}}{{i.Date}}</p><br>
     </div>  <div class="col-md-1"></div>
-  {% endfor %}  
+  {% endfor %}
+  {% else%}
+  <h3>No reviewer.</h3>
+  {% endif %}
   </div>
 </div>
  {% endblock content %}

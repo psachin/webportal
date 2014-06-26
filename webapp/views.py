@@ -902,9 +902,22 @@ def detail_user(request):
    """
    context = RequestContext(request)
    contributor = Contributor.objects.all()
-   print contributor[0].picture
    reviewer = Reviewer.objects.all()
+   if contributor:
+       print contributor[0].picture
+   else:
+       print "Sorry, no contributor found."
    context_dict = {'contributor': contributor,
                    'reviewer': reviewer,
 		  }
    return render_to_response('detail_user.html',context_dict,context)
+
+
+def developer_team(request):
+   """
+   Argument:
+
+   `request`: This function redirects to the page having detailed information of Developer team.
+   """
+   context = RequestContext(request)
+   return render_to_response('developers_page.html',context)
