@@ -25,10 +25,10 @@
 				      </p>
 				    </td>
 				    
-				    <td><a href="/reviewer/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/"><strong>{{ i.topic }}</strong></a>
+				    <td><a href="/reviewer/profile/{{i.class_number__class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/"><strong>{{ i.topic }}</strong></a>
 				    </td>
 				    
-				    <td>{{i.summary|truncatewords:10}}<a href="/reviewer/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/detail/">read more ...</a>
+				    <td>{{i.summary|truncatewords:10}}<a href="/reviewer/profile/{{i.class_number__class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/detail/">read more ...</a>
 				    </td>
 				    
 				    <td>

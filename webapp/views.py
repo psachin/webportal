@@ -47,10 +47,11 @@ def about(request):
 
     Argument:
 
-    `request`: Request from client
-    This function takes the request of the client and direct it to the page
-consisting of the description about the site.
+    `request`: Request from client This function takes the request of
+    the client and direct it to the page consisting of the description
+    about the site.
     """
+
     context = RequestContext(request)
     return render_to_response('about.html', context)
 
@@ -58,10 +59,12 @@ consisting of the description about the site.
 def contact(request):
     """Contact us page.
 
-    Arguments:
+    Arguments: 
+
     `request`: Request from the client.
-    This function takes the request of the client and direct it to the contact
-us page.
+  
+    This function takes the request of the client and direct it to the
+    contact us page.
     """
     context = RequestContext(request)
 
@@ -97,9 +100,11 @@ def userlogin(request):
     """
     Argument:
 
-    `request`: Request from the user to login
-    This function takes the request of the user and direct it to the login
-page.
+    `request`: Request from the user to login.
+
+    This function takes the request of the user and direct it to the
+    login page.
+    
     """
     context = RequestContext(request)
     if request.user.is_authenticated():
@@ -185,8 +190,9 @@ def contributor_profile_subject(request, class_num):
 
     `class_num`: Class in which the logged in contributor has contributed
 
-    This function takes the request of user and direct it to profile page
-which consists of his contributions in a specific class.
+    This function takes the request of user and direct it to profile
+    page which consists of his contributions in a specific class.
+
     """
     context = RequestContext(request)
     contributor = Contributor.objects.get(user=request.user)
@@ -213,8 +219,10 @@ def contributor_profile_topic(request, class_num, sub):
 
     `sub`: Subject in which the logged in contributor has contributed
 
-    This function takes the request of user and direct it to profile page
-which consists of his contributions in a specific subject of a  specific class.
+    This function takes the request of user and direct it to profile
+    page which consists of his contributions in a specific subject of a
+    specific class.
+
     """
     context = RequestContext(request)
     contributor = Contributor.objects.get(user=request.user)
@@ -240,11 +248,13 @@ def contributor_profile_comment(request, class_num, sub, topics, id):
 
     `sub`: Subject in which the logged in contributor has contributed.
 
-    `topics`: Subject topic in which the logged in contributor has contributed.
+    `topics`: Subject topic in which the logged in contributor has
+    contributed.
 
-     This function takes the request of user and direct it to profile page
-which consists of his comments of reviewer on a specific subject of a  specific
-class.
+    This function takes the request of user and direct it to profile
+    page which consists of his comments of reviewer on a specific
+    subject of a specific class. 
+
     """
     context = RequestContext(request)
     contributor = Contributor.objects.get(user=request.user)
@@ -272,14 +282,15 @@ def contributor_profile_topic_detail(request, class_num, sub, topics, id):
     `sub`: Subject in which the logged in contributor has contributed.
 
     `topics`: Subject topic in which the logged in contributor has
-contributed.
+    contributed.
 
     `id`: Id of the subject in which the logged in contributor has
-contributed.
+    contributed.
 
     This function takes the request of user and direct it to profile page which
-consists of his comments of reviewer on a specified topic of a subject of a
-specific class.
+    consists of his comments of reviewer on a specified topic of a subject of a
+    specific class.
+    
     """
     context = RequestContext(request)
     contributor = Contributor.objects.get(user=request.user)
@@ -299,17 +310,22 @@ def topic(request,class_num,sub,topics,id):
     """
     Arguments:
 
-    `REQUEST`: Request from user.
+    `request`: Request from user.
 
-    `CLASS_NUM` : Class in which the logged in contributor has contributed.
+    `class_num`: Class in which the logged in contributor has
+    contributed.
 
-    `SUB` : Subject in which the logged in contributor has contributed.
+    `sub`: Subject in which the logged in contributor has contributed.
 
-    `TOPICS` : Subject topic in which the logged in contributor has contributed.
+    `topics`: Subject topic in which the logged in contributor has
+    contributed.
 
     `ID` : Id of the subject in which the logged in contributor has contributed.
 
-    This function takes the request of user and direct it to profile page which consists of details of a specified topic of a subject of a specific class.
+    This function takes the request of user and direct it to profile
+    page which consists of details of a specified topic of a subject
+    of a specific class.
+
     """
     context = RequestContext(request)
     subject = Subject.objects.get(id=id)
@@ -323,19 +339,21 @@ def reviewer_profile_topic_detail(request, class_num, sub, topics, id):
 
     `request`: Request from user.
 
-    `class_num`: Class in which the logged in contributor has contributed.
+    `class_num`: Class in which the logged in contributor has
+    contributed.
 
     `sub`: Subject in which the logged in contributor has contributed.
 
     `topics`: Subject topic in which the logged in contributor has
-contributed.
+    contributed.
 
     `id`: Id of the subject in which the logged in contributor has
-contributed.
+    contributed.
 
-    This function takes the request of user and direct it to profile page which
-consists of his comments of reviewer on a specified topic of a subject of a
-specific class.
+    This function takes the request of user and direct it to profile
+    page which consists of his comments of reviewer on a specified topic
+    of a subject of a specific class.
+    
     """
     context = RequestContext(request)
     reviewer = Reviewer.objects.get(user=request.user)
@@ -360,6 +378,7 @@ def reviewer_profile(request):
     `request`: Request from user.
 
     This function takes the request of user and directs it to the profile page.
+    
     """
     context = RequestContext(request)
     reviewer = Reviewer.objects.get(user=request.user)
@@ -379,8 +398,9 @@ def reviewer_profile_subject(request, class_num):
 
     `class_num` : Class in which the contributor has contributed.
 
-    This function takes the request of user and direct it to the profile page
-which consists of the contributor's contributions in a specific class.
+    This function takes the request of user and direct it to the
+    profile page which consists of the contributor's contributions in a
+    specific class.
     """
     context = RequestContext(request)
     reviewer = Reviewer.objects.get(user=request.user)
@@ -405,9 +425,9 @@ def reviewer_profile_topic(request, class_num, sub):
 
     `sub`: subject in which the contributor has contributed.
 
-    This function takes the request of user and directs it to the profile page
-which consists of the contributor's contributions in a specific subject of a
-specific class.
+    This function takes the request of user and directs it to the
+    profile page which consists of the contributor's contributions in a
+    specific subject of a specific class.
     """
     context = RequestContext(request)
     reviewer = Reviewer.objects.get(user=request.user)
@@ -445,9 +465,10 @@ def reviewer_profile_comment(request, class_num, sub, topics, id):
 
     `id`: Id of the reviewer.
 
-    This function takes the request of user and directs it to the profile page
-which consists of the contributor's contributions in a specific subject of a
-specific class.
+    This function takes the request of user and directs it to the
+    profile page which consists of the contributor's contributions in a
+    specific subject of a specific class.
+    
     """
     context = RequestContext(request)
     comment = Comment.objects.filter(subject_id=id).order_by('-submit_date')
@@ -485,8 +506,9 @@ def reviewer_past_approvals(request):
 
     `request`: Request from contributor to sign up.
 
-    This function takes the request of user and directs it to the profile page
-which consists of the reviewer's past approvals.
+    This function takes the request of user and directs it to the
+    profile page which consists of the reviewer's past approvals.
+    
     """
     context = RequestContext(request)
     reviewer = Reviewer.objects.get(user=request.user)
@@ -502,16 +524,21 @@ def topic(request, class_num, sub, topics, id):
 
     `request`: Request from user.
 
-    `class_num`: Class in which the logged in contributor has contributed.
+    `class_num`: Class in which the logged in contributor has
+    contributed.
 
     `sub`: Subject in which the logged in contributor has contributed.
 
-    `topics`: Subject topic in which the logged in contributor has contributed.
+    `topics`: Subject topic in which the logged in contributor has
+    contributed.
 
-    `id`: Id of the subject in which the logged in contributor has contributed.
+    `id`: Id of the subject in which the logged in contributor has
+    contributed.
 
-    This function takes the request of user and direct it to profile page which
-consists of details of a specified topic of a subject of a specific class.
+    This function takes the request of user and direct it to profile
+    page which consists of details of a specified topic of a subject of a
+    specific class.
+    
     """
     context = RequestContext(request)
     subject = Subject.objects.get(id=id)
@@ -597,6 +624,7 @@ def reviewer_signup(request):
     `request`: Request from reviewer to sign up.
 
     This function is used for a new revieweer to sign up.
+
     """
     context = RequestContext(request)
     registered = False
@@ -677,6 +705,7 @@ def contributor_upload(request):
     `request`: Request from contributor for a new upload.
 
      This function is used to upload a new file by contributor.
+
     """
     context = RequestContext(request)
     uploaded = False
@@ -735,6 +764,7 @@ def contributor_profile_edit(request):
     `request`: Request form contributor to edit his profile.
 
     Edit user's/Coordinators profile.
+
     """
     context = RequestContext(request)
     print request.user
