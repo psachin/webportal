@@ -875,23 +875,23 @@ def search(request, lang):
         user = User.objects.get(username=request.user.username)
     except:
         user = None
-        query = request.GET['q']
-        filter_query = Subject.objects.filter(topic__icontains=query)
-        filter_lang = filter_query.filter(language__language=lang)
-        filter_review = filter_lang.filter(review__gte=3)
-        results_topic = filter_review.order_by('class_number')
-        filter_query = Subject.objects.filter(name__icontains=query)
-        filter_lang = filter_query.filter(language__language=lang)
-        filter_review = filter_lang.filter(review__gte=3)
-        results_name = filter_review.order_by('class_number')
-        template = loader.get_template('search.html')
-        context = Context({'query': query,
-                           'results_topic': results_topic,
-                           'results_name': results_name,
-                           'lang': lang,
-                           'user': user})
-        response = template.render(context)
-        return HttpResponse(response)
+    query = request.GET['q']
+    filter_query = Subject.objects.filter(topic__icontains=query)
+    filter_lang = filter_query.filter(language__language=lang)
+    filter_review = filter_lang.filter(review__gte=3)
+    results_topic = filter_review.order_by('class_number')
+    filter_query = Subject.objects.filter(name__icontains=query)
+    filter_lang = filter_query.filter(language__language=lang)
+    filter_review = filter_lang.filter(review__gte=3)
+    results_name = filter_review.order_by('class_number')
+    template = loader.get_template('search.html')
+    context = Context({'query': query,
+                       'results_topic': results_topic,
+                       'results_name': results_name,
+                       'lang': lang,
+                       'user': user})
+    response = template.render(context)
+    return HttpResponse(response)
 
 
 def detail_user(request):
