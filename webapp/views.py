@@ -878,8 +878,11 @@ def detail_user(request):
    """
    context = RequestContext(request)
    contributor = Contributor.objects.all()
-   print contributor[0].picture
    reviewer = Reviewer.objects.all()
+   if contributor:
+       print contributor[0].picture
+   else:
+       print "Sorry, no contributor found."
    context_dict = {'contributor': contributor,
                    'reviewer': reviewer,
 		  }
