@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib import messages
+from captcha.fields import ReCaptchaField
 
 #import the models here
 from models import Contributor, Reviewer, Class
@@ -37,10 +38,11 @@ class ContactForm(forms.ModelForm):
             'rows': 4}),
         help_text="Please write your message.",
         required=True)
+    captcha = ReCaptchaField(attrs={'theme': 'clean'})
 
     class Meta:
         model = Contact
-        fields = ['name', 'email', 'message']
+        fields = ['name', 'email', 'message', 'captcha']
 
 
 class UserForm(forms.ModelForm):
