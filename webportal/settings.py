@@ -144,8 +144,8 @@ INSTALLED_APPS = (
     'webapp',
 )
 
-RECAPTCHA_PUBLIC_KEY = '6LcQ4_USAAAAAO3wR_TK3j83B4vcMZ7ZPADfAnlR'
-RECAPTCHA_PRIVATE_KEY = '6LcQ4_USAAAAAEkjKxL4WUgi4Dw6oGNEHZWHWcuf'
+RECAPTCHA_PUBLIC_KEY=secret.RECAPTCHA_PUBLIC_KEY_VALUE
+RECAPTCHA_PRIVATE_KEY=secret.RECAPTCHA_PRIVATE_KEY_VALUE
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
