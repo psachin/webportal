@@ -59,6 +59,7 @@ urlpatterns = patterns(
     url(r'^content/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/$','webapp.views.topic'),
 
     url(r'^content/(?P<lang>[\w ]+)/$','webapp.views.content'),
+    url(r'^content/(?P<class_num>\d+)/(?P<sub>[\w ]+)/(?P<topics>[\w ]+)/(?P<id>\d+)/$','webapp.views.topic'),
     url(r'^user_detail/$','webapp.views.detail_user'),
     # this is used for selecting language of the contents
     url(r'^language/$','webapp.views.language_select'),
@@ -69,6 +70,7 @@ urlpatterns = patterns(
     
     url(r'^search/(?P<lang>[\w ]+)/$','webapp.views.search'),
     url(r'^contact/$', 'webapp.views.contact'),
+    url(r'^developer_team/$','webapp.views.developer_team'),
 )
 
 
