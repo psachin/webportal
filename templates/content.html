@@ -18,11 +18,14 @@
 
 		</form>
 		<div class="tfclear"></div>
+
 	
 {% if uploads %}
+   
+       
 <div class="table-responsive">
     <table class="table table-hover" id="uploads">
-        <tr class="success">
+     <tr class="success">
            <td><strong>Class</strong></td>
            <td><strong>Subject</strong></td>
            <td><strong>Topic</strong></td>
@@ -30,15 +33,16 @@
            <td><strong>PDF</strong></td>
            <td><strong>Video</strong></td>
            <td><strong>animation</strong></td>
-                    
-        </tr>
+           </tr>        
+     
         {% for i in uploads %}
-           <tr class="active">
+        {% set counter = 0 %}
+            <tr class="active">   
            <td><strong>{{i.class_number}}</strong></a>
            </p>
           </td>
                  
-           <td><strong>{{i.name}}</strong></a>
+           <td><strong>  {{i.name}}  </strong></a>
            </p>
            </td>
                     {% if user.is_authenticated %}
@@ -72,18 +76,31 @@
                     <a href="/media/animation/{{i.animation}}"><i class="fa fa-file-image-o fa-2x"></i></a>
                     {% else %}<i class="fa fa-ban fa-2x"></i>
                     {% endif %} 
-                    </td>         
-                  </tr>
+                    </td>  
+                    </tr>
+                    {{ counter++ }}
+                    {% if counter in 6 %}
+                      <tr class="success">
+           <td><strong>Class</strong></td>
+           <td><strong>Subject</strong></td>
+           <td><strong>Topic</strong></td>
+           <td><strong>Summary</strong></td>
+           <td><strong>PDF</strong></td>
+           <td><strong>Video</strong></td>
+           <td><strong>animation</strong></td>
+           </tr>        
+                {% endif %}  
+     
                 {% endfor %}
+
+
 		</table>
 	<ul class="pagination" id="unordered-code-list"></ul> 
 				{% else %}
   				<p>Nothing to display.</p>
   				{% endif %}
 
-
-	</div>
-
+</div>
 <script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
  var pager = new Pager('uploads', 6, 'unordered-code-list');
