@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
+
 <div class="container footer_padding" align="center" style="padding-top:8%">
 </div>
 <div class="container footer_padding" align="center" style="padding-top 2.5cm">
@@ -24,19 +26,20 @@
    
        
 <div class="table-responsive">
-    <table class="table table-hover" id="uploads">
+    <table class="table table-hover"  id="tablepaging" class="yui">
+    <thead>
      <tr class="success">
-           <td><strong>Class</strong></td>
-           <td><strong>Subject</strong></td>
-           <td><strong>Topic</strong></td>
-           <td><strong>Summary</strong></td>
-           <td><strong>PDF</strong></td>
-           <td><strong>Video</strong></td>
-           <td><strong>animation</strong></td>
+           <th><strong>Class</strong></th>
+           <th><strong>Subject</strong></th>
+           <th><strong>Topic</strong></th>
+           <th><strong>Summary</strong></th>
+           <th><strong>PDF</strong></th>
+           <th><strong>Video</strong></th>
+           <th><strong>animation</strong></th>
            </tr>        
-     
+         </thead>
         {% for i in uploads %}
-        {% set counter = 0 %}
+          <tbody>
             <tr class="active">   
            <td><strong>{{i.class_number}}</strong></a>
            </p>
@@ -78,32 +81,28 @@
                     {% endif %} 
                     </td>  
                     </tr>
-                    {{ counter++ }}
-                    {% if counter in 6 %}
-                      <tr class="success">
-           <td><strong>Class</strong></td>
-           <td><strong>Subject</strong></td>
-           <td><strong>Topic</strong></td>
-           <td><strong>Summary</strong></td>
-           <td><strong>PDF</strong></td>
-           <td><strong>Video</strong></td>
-           <td><strong>animation</strong></td>
-           </tr>        
-                {% endif %}  
+                    </tbody>        
+                   
+                 
      
                 {% endfor %}
 
 
 		</table>
-	<ul class="pagination" id="unordered-code-list"></ul> 
+	<ul class="pagination" id="pageNavPosition"></ul> 
 				{% else %}
   				<p>Nothing to display.</p>
   				{% endif %}
 
+
 </div>
+
 <script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
- var pager = new Pager('uploads', 6, 'unordered-code-list');
+ var pager = new Pager('tablepaging', 5);
+pager.init();
+pager.showPageNav('pager', 'pageNavPosition');
+pager.showPage(1);
 </script>
 </div>
 {% endblock content %}
