@@ -1,5 +1,7 @@
 body {
     overflow-x: hidden;
+    padding-bottom:180px;
+ 
 }
 
 p {
@@ -320,6 +322,7 @@ form .row:first-child .floating-label-form-group {
 
 footer {
     color: #fff;
+    bottom:0px;
 }
 
 footer h3 {
@@ -328,7 +331,7 @@ footer h3 {
 
 footer .footer-above {
     padding-top: 5px;
-    background-color: #002147;
+    background-color: #002147;height:150px;
 }
 
 footer .footer-col {
@@ -337,7 +340,7 @@ footer .footer-col {
 
 footer .footer-below {
     padding: 5px 0;
-    background-color: #233140;
+    background-color: #233140;height:30px;
 }
 
 .btn-social {
