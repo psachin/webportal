@@ -14,7 +14,11 @@
 			        <td><a href="/contributor/profile/{{class_num}}/{{i}}">{{i}}</a></td><hr>
 				{% endfor %}
 				</table>
-				<ul class="pagination" id="unordered-code-list"></ul> 
+				<ul class="pagination" id="pageNavPosition"></ul> 
+				{% else %}
+  				<p>Nothing to display.</p>
+  				{% endif %}
+                                 
   			</div><div class="col-md-1"></div>
       				<div class="col-md-3" style= " background-color:#cad3d9; margin-top:8%"><br/>
 				<strong>Welcome {{contributor.user.username}}</strong><br><br>
@@ -35,12 +39,7 @@
 				
 				
                             </div>
-				<ul class="pagination" id="pageNavPosition"></ul> 
-				{% else %}
-  				<p>Nothing to display.</p>
-  				{% endif %}
-
-
+				
     			</div>
   </div>
    </div>
