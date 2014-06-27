@@ -873,10 +873,12 @@ def content(request, lang):
     filter_review = Subject.objects.all().filter(review__gte=3)
     filter_lang = filter_review.filter(language__language=lang)
     uploads = filter_lang.order_by('class_number')
+    count = len(uploads)
     context_dict = {
         'uploads': uploads,
         'contributor': contributor,
         'lang': lang,
+	'count': count,
     }
     return render_to_response('content.html', context_dict, context)
 
