@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from captcha.fields import ReCaptchaField
 
-#import the models here
+# Import the models here
+
 from models import Contributor, Reviewer, Class
 from models import Subject, Comment, Language, Contact
 
