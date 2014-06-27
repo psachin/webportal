@@ -513,7 +513,15 @@ def reviewer_past_approvals(request):
     context = RequestContext(request)
     reviewer = Reviewer.objects.get(user=request.user)
     subject = Subject.objects.all().order_by('-uploaded_on')
-    context_dict = {'subject': subject, 'reviewer': reviewer}
+    past_approvals = list()
+    count = 0
+    for i in subject:
+       if count == 10:
+           break
+       if reviewer in i.reviewer.all():
+          past_approvals.append(i)
+          count += 1
+    context_dict = {'past_approvals': past_approvals, 'reviewer': reviewer}
     return render_to_response("reviewer_past_approvals.html",
                               context_dict, context)
 

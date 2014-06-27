@@ -18,19 +18,27 @@
 				    <td><strong>animation</strong></td>
 				    <td><strong>Approve</strong></td>
   				 </tr>
-  				{% for i in subject %}
-				{% if reviewer in i.reviewer.all %}
+  				{% for i in past_approvals %}
 				 <tr class="active">
    				 <td><strong>{{i.name}}</strong></a>
 				      </p>
 				    </td>
 				    
-				    <td><a href="/reviewer/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/"><strong>{{ i.topic }}</strong></a>
+				    <td>
+                                    {% if i.summary|length >= 100 %}
+				      {{i.summary|truncatewords:10}}<a href="/reviewer/profile/{{class_num}}/{{sub}}/{{i.topic}}/{{i.id}}/detail">Read More ...</a>
+				    {% else %}
+					{{i.summary}}
+				    {% endif %}
 				    </td>
                                     
 				    
-				    <td>{{i.summary|truncatewords:10}}<a href="/reviewer/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/detail/">read more ...</a>
-				    </td>
+				    <td>
+                                    {% if i.summary|length >= 100 %}
+                                      {{i.summary|truncatewords:10}}<a href="/contributor/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/detail">Read More ...</a>
+                                    {% else %}
+                                      {% endif %}
+                         	   </td>
 				    
 				    <td>
 				    {% if i.pdf %}
@@ -45,14 +53,13 @@
 				    {% if i.animation %}
 					<a href="/media/animation/{{i.animation}}"><i class="fa fa-file-image-o fa-2x"></i></a>
 				    {% else %}
-				    {% endif %}	
+				    {% endif %}
 				    </td>         
 				  
 				<td>
 				<p>Approved</p>
 				</td>
 				</tr>
-				{% endif %}
 				{% endfor %}</table></div>
 			        </div>
     				
