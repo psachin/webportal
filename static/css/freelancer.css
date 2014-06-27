@@ -339,13 +339,8 @@ footer .footer-col {
 }
 
 footer .footer-below {
-<<<<<<< HEAD
-    padding: 0px;
-    background-color: #233140;
-=======
     padding: 5px 0;
     background-color: #233140;height:30px;
->>>>>>> 995e9c0ef3c2b306c9ef9b018bb353ce6a21c523
 }
 
 .btn-social {
