@@ -611,7 +611,7 @@ Waiting for your your approval"""
                 request,
                 "Form successfully submitted. Waiting for activation \
 from admin.")
-            return HttpResponseRedirect('webapp.views.contributor_signup')
+            return HttpResponseRedirect(reverse('webapp.views.contributor_signup'))
         else:
             if contributor_form.errors or user_form.errors:
                 print user_form.errors, contributor_form.errors
@@ -674,10 +674,10 @@ Waiting for your your approval"""
     else:
         reviewer_form = ReviewerForm()
         user_form = UserForm()	
-        context_dict = {'user_form': user_form,
+    context_dict = {'user_form': user_form,
                         'reviewer_form': reviewer_form,
                         'registered': registered}
-        return render_to_response('webapp/reviewer_signup.html', context_dict, context)
+    return render_to_response('webapp/reviewer_signup.html', context_dict, context)
 
 def user_logout(request):
     """
