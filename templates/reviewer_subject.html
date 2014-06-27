@@ -15,6 +15,11 @@
 				{% endfor %}
 
 				</table>
+                                <ul class="pagination" id="pageNavPosition"></ul> 
+				{% else %}
+  				<p>Nothing to display.</p>
+  				{% endif %}
+
             			</div><div class="col-md-1"></div>
       				<div class="col-md-3" style= " background-color:#cad3d9; margin-top:8%"><br/>
 				<strong>Welcome {{reviewer.user.username}}</strong><br><br>
@@ -38,11 +43,7 @@
    </div>
 </div>
                             </div>
-				<ul class="pagination" id="pageNavPosition"></ul> 
-				{% else %}
-  				<p>Nothing to display.</p>
-  				{% endif %}
-
+				
     
     			</div>
   </div>
