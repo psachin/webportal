@@ -81,6 +81,11 @@ Deploy on server
 
     git clone https://github.com/khushbu14/webportal.git
 
+- Collect static files(Required by Django's admin interface) ::
+
+    cd webportal
+    python manage.py collectstatic
+
 - Install *virtualenv* using above steps and mention the path in
   `wsgi.py` file.
 
