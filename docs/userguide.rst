@@ -289,7 +289,7 @@ takes him to his profile or enables him to logout.
 
 
 
-  ``Example:``
+``Example:``
 
 
 .. figure:: _static/img/homepage.png
@@ -297,7 +297,7 @@ takes him to his profile or enables him to logout.
    :width: 1000 px
    :scale: 60 %
    :alt: Home Page
-   :align: cente
+   :align: center
 
    Home page (before logging in)
 
