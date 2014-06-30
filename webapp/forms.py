@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from captcha.fields import ReCaptchaField
 
-#import the models here
+# Import the models here
+
 from models import Contributor, Reviewer, Class
 from models import Subject, Comment, Language, Contact
 
@@ -133,10 +134,11 @@ class ContributorForm(forms.ModelForm):
         widget=forms.FileInput(attrs={
             'placeholder': 'Contributor picture.'}),
         required=False)
+    captcha = ReCaptchaField(attrs={'theme': 'clean'})
 
     class Meta:
         model = Contributor
-        fields = ('picture', 'contact', 'validation_docs')
+        fields = ('picture', 'contact', 'validation_docs', 'captcha')
 
     def clean_validtion_docs_file(self):
         """Limit doc_file upload size."""
@@ -172,10 +174,11 @@ class ReviewerForm(forms.ModelForm):
         help_text="",
         required=False,
         error_messages={'required': 'Last name is required.'})
+    captcha = ReCaptchaField(attrs={'theme': 'clean'})
 
     class Meta:
         model = Reviewer
-        fields = ('picture', 'contact')
+        fields = ('picture', 'contact', 'captcha')
 
 
 class ContributorUploadForm(forms.ModelForm):

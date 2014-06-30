@@ -9,7 +9,6 @@ Views
 .. automodule:: webapp.views
    :members:
 
-
 Models
 ------
 
