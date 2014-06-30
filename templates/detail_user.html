@@ -6,10 +6,9 @@
 .pic img:hover { opacity: 1; width:125px ; height:125px ;} 
 </style>
 <div class="container" style= "padding-top: 5%; padding-bottom:5% ;margin-top:8%">
-  <h1>Panel of contributors</h1>
+  <h1>Panel of contributor{{contributor|length|pluralize}}</h1>
   <hr>
   <div class="row">
-  {% if contributor %}
   {% for i in contributor %}
     <div class="col-md-2 pic" style="width:180px ; height:180px">
       {% if i.picture %}
@@ -19,15 +18,11 @@
      {% endif %}
     <br><p class="text-info">{{i.user.username}}{{i.Date}}</p><br>
     </div>  <div class="col-md-1"></div>
-  {% endfor %}
-  {% else %}
-  <h3>No contributor.</h3>
-  {% endif %}
+  {% endfor %}  
   </div>
- <h1>Panel of Reviewer</h1>
+ <h1>Panel of  Reviewer{{reviewer|length|pluralize}}</h1>
   <hr>
   <div class="row">
-  {% if reviewer %}
   {% for i in reviewer %}
     <div class="col-md-2 pic" style="width:180px ; height:180px">
       {% if i.picture %}
@@ -37,10 +32,7 @@
      {% endif %}
     <br><p class="text-info">{{i.user.username}}{{i.Date}}</p><br>
     </div>  <div class="col-md-1"></div>
-  {% endfor %}
-  {% else%}
-  <h3>No reviewer.</h3>
-  {% endif %}
+  {% endfor %}  
   </div>
 </div>
  {% endblock content %}

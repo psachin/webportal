@@ -10,6 +10,7 @@
 				<div class="table-responsive">
 				<table class="table table-hover">
 				 <tr class="success">
+                                    <td><strong>Class</strong></td>
     				    <td><strong>subject</strong></td>
     				    <td><strong>Topic</strong></td>
 			            <td><strong>Summary</strong></td>
@@ -18,23 +19,23 @@
 				    <td><strong>animation</strong></td>
 				    <td><strong>Approve</strong></td>
   				 </tr>
-  				{% for i in past_approvals %}
+  				{% for i in subject %}
 				 <tr class="active">
-   				 <td><strong>{{i.name}}</strong></a>
-				      </p>
+                                 <td><strong>{{i.class_number_number}}</strong></td>
+   				 <td><strong>{{i.name}}</strong>
 				    </td>
-				    
-				    td><a href="/reviewer/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/">
+			
+				    <td><a href="/reviewer/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/">
 					<strong>{{ i.topic }}</strong></a>
 				    </td>
-                                    
 				    
-				    <td>
-                                    {% if i.summary|length >= 100 %}
-                                      {{i.summary|truncatewords:10}}<a href="/contributor/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/detail">Read More ...</a>
-                                    {% else %}
-                                      {% endif %}
-                         	   </td>
+				     <td>
+				    {% if i.summary|length >= 100 %}
+				      {{i.summary|truncatewords:10}}<a href="reviewer/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/detail">Read More ...</a>
+				    {% else %}
+					{{i.summary}}
+				    {% endif %}
+				    </td>
 				    
 				    <td>
 				    {% if i.pdf %}
@@ -49,13 +50,14 @@
 				    {% if i.animation %}
 					<a href="/media/animation/{{i.animation}}"><i class="fa fa-file-image-o fa-2x"></i></a>
 				    {% else %}
-				    {% endif %}
+				    {% endif %}	
 				    </td>         
 				  
 				<td>
 				<p>Approved</p>
 				</td>
 				</tr>
+				{% endif %}
 				{% endfor %}</table></div>
 			        </div>
     				
@@ -70,7 +72,7 @@
 				<br><br>
 				<a href="/reviewer/profile/edit/">
     				<button id='Edit-Profile-button' class="btn btn-primary" type='submit' ><span><i class="fa fa-pencil"></i>&nbsp;&nbsp;Edit Profile</span></button></a><br/><br/>
-  				<a href="/user/password/change">
+  				<a href="/user/password/change/">
    			        <button id='Password-reset-button'  type='submit' class="btn btn-primary"><span><i class="fa fa-pencil"></i>&nbsp;&nbsp;Change Password</span></button></a><br><br>
   
                           	</div>
