@@ -24,12 +24,8 @@
 				      </p>
 				    </td>
 				    
-				    <td>
-                                    {% if i.summary|length >= 100 %}
-				      {{i.summary|truncatewords:10}}<a href="/reviewer/profile/{{class_num}}/{{sub}}/{{i.topic}}/{{i.id}}/detail">Read More ...</a>
-				    {% else %}
-					{{i.summary}}
-				    {% endif %}
+				    td><a href="/reviewer/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/">
+					<strong>{{ i.topic }}</strong></a>
 				    </td>
                                     
 				    
