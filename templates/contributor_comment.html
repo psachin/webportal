@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 
+
 <div class="container" style= "padding-top: 5%; padding-bottom:5%">
 <div class="row">
   	<div class="col-md-12">
@@ -23,7 +24,7 @@
 				</div>
       				<div class="col-md-1"></div>
       				<div class="col-md-3" style= "margin-top:8%;background-color:#d5dce1"><br>
-				<strong>Welcome {{contributor.user.username}}</strong><br><br>
+				<strong><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Welcome {{contributor.user.username}}</strong><br><br>
                                 {% if contributor.picture %}
                                 <img src="/media/{{contributor.picture}}" width=100px height=100px align="center"  class="img-responsive img-rounded">
 				{% else %}
@@ -32,9 +33,9 @@
 				<br><br>
                                 <a href= "/contributor/upload/">Upload more </a><br><br>
 				<a href="/contributor/profile/edit/">
-    				<button id='Edit-Profile-button' class="btn btn-primary" type='submit' ><span>Edit Profile</span></button></a><br/><br/>
+    				<button id='Edit-Profile-button' class="btn btn-primary" type='submit' ><span><i class="fa fa-pencil"></i>&nbsp;&nbsp;Edit Profile</span></button></a><br/><br/>
   				<a href="/user/password/change">
-   			        <button id='Password-reset-button'  type='submit' class="btn btn-primary"><span>Change Password</span></button></a><br><br>
+   			        <button id='Password-reset-button'  type='submit' class="btn btn-primary"><span><i class="fa fa-pencil"></i>&nbsp;&nbsp;Change Password</span></button></a><br><br>
   
                           	</div>
 				

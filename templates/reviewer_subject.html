@@ -7,7 +7,7 @@
    		 <div class="row">
       				<div class="col-md-8" style= " background-color:#d5dce1; margin-top:8%">
 				{% if uploads %}
-                                <h3>Subjects corresponding to class {{class_num}}</h3>
+                                <h3><i class="fa fa-comments"></i>&nbsp; &nbsp;Subjects corresponding to class {{class_num}}</h3>
 				<table class="table table-hover" id="uploads">	
 				{% for i in uploads %}
 				<table class="table table-hover">    				
@@ -17,7 +17,7 @@
 				</table>
             			</div><div class="col-md-1"></div>
       				<div class="col-md-3" style= " background-color:#cad3d9; margin-top:8%"><br/>
-				<strong>Welcome {{reviewer.user.username}}</strong><br><br>
+				<strong><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Welcome {{reviewer.user.username}}</strong><br><br>
                                 {% if reviewer.picture %}
                                 <img src="/media/{{reviewer.picture}}" width=100px height=100px align="center"  class="img-responsive img-rounded">
 				{% else %}
@@ -27,9 +27,9 @@
 				<br><br>
 				<a href= "/reviewer/past/approvals/">Past Approvals </a><br><br>
 				<a href="/reviewer/profile/edit/">
-    				<button id='Edit-Profile-button' class="btn btn-primary" type='submit' ><span>Edit Profile</span></button></a><br/><br/>
+    				<button id='Edit-Profile-button' class="btn btn-primary" type='submit' ><span><i class="fa fa-pencil"></i>&nbsp;&nbsp;Edit Profile</span></button></a><br/><br/>
   				<a href="/user/password/change/">
-   			        <button id='Password-reset-button'  type='submit' class="btn btn-primary"><span>Change Password</span></button></a><br><br>
+   			        <button id='Password-reset-button'  type='submit' class="btn btn-primary"><span><i class="fa fa-pencil"></i>&nbsp;&nbsp;Change Password</span></button></a><br><br>
   
                           	</div>
 				
