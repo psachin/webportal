@@ -26,7 +26,7 @@
    
        
 <div class="table-responsive">
-    <table class="table table-hover"  id="tablepaging" class="yui">
+    <table class="table table-hover"  id="uploads">
     <thead>
      <tr class="success">
            <th><strong>Class</strong></th>
@@ -89,7 +89,7 @@
 
 
 		</table>
-	<ul class="pagination" id="pageNavPosition"></ul> 
+	<ul class="pagination" id="unordered-code-list"></ul> 
 				{% else %}
   				<p>Nothing to display.</p>
   				{% endif %}
@@ -99,10 +99,10 @@
 
 <script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
- var pager = new Pager('tablepaging', 5);
+ var pager = new Pager('uploads', 5);
 pager.init();
-pager.showPageNav('pager', 'pageNavPosition');
-pager.showPage(1);
+pager.showPageNav('pager', 'unordered-code-list');
+pager.showPage(1); 
 </script>
 </div>
 {% endblock content %}
