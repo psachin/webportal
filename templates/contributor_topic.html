@@ -11,7 +11,7 @@
 				<h3>contribution in class {{class_num}}</h3>
  			{% if uploads %}
 				<div class="table-responsive">
-				<table class="table table-hover" id="tablepaging" class="yui">
+				<table class="table table-hover" id="uploads">
 				
 				 <tr class="success">
     				    <td><strong>subject</strong></td>
@@ -62,7 +62,7 @@
 				
 			         {% endfor %}
 				</table>
-                                 <ul class="pagination" id="pageNavPosition"></ul> 
+                                 <ul class="pagination" id="unordered-code-list"></ul> 
 				{% else %}
   				<p>Nothing to display.</p>
   				{% endif %}
@@ -101,10 +101,7 @@
 
 <script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
- var pager = new Pager('tablepaging', 5);
-pager.init();
-pager.showPageNav('pager', 'pageNavPosition');
-pager.showPage(1);
+ var pager = new Pager('uploads', 6, 'unordered-code-list');
 </script>
 
 {% endblock content %}
