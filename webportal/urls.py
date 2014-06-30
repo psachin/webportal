@@ -87,8 +87,10 @@ urlpatterns = patterns(
     url(r'^developer_team/$','webapp.views.developer_team'),
 )
 
-if settings.DEBUG:
+if settings.DEBUG is False:
     # static files (images, css, javascript, etc.)
-    urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-        'document_root': settings.MEDIA_ROOT}))
+    urlpatterns += patterns(
+        'django.views.static',
+        (r'media/(?P<path>.*)',
+        'serve',
+        {'document_root': settings.MEDIA_ROOT}),)

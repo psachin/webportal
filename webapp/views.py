@@ -441,6 +441,9 @@ def reviewer_profile_topic(request, class_num, sub):
         print "reviewer has reviewed"
         print subject.review
         print subject.id
+        url = reverse('webapp.views.reviewer_profile_topic', kwargs={
+            'class_num': class_num, 'sub': sub})
+        return HttpResponseRedirect(url)
     filter_sub = Subject.objects.filter(class_number__class_number=class_num)
     uploads = filter_sub.filter(name=sub).filter(review__lt=3)
     uploads = uploads.order_by('topic')
