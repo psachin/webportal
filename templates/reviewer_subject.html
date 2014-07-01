@@ -6,20 +6,20 @@
   	<div class="col-md-12">
    		 <div class="row">
       				<div class="col-md-8" style= " background-color:#d5dce1; margin-top:8%">
-				{% if uploads %}
                                 <h3>Subjects corresponding to class {{class_num}}</h3>
-				<table class="table table-hover" id="tablepaging" class="yui">	
-				{% for i in uploads %}
-				<table class="table table-hover">    				
-			        <td><a href="/reviewer/profile/{{class_num}}/{{i}}">{{i}}</a></td><hr>
+                                {% if uploads %}
+                                <div class="table-responsive">
+				<table class="table table-hover" id="tablepaging">	
+				{% for i in uploads %}   				
+			        <tr><td><a href="/reviewer/profile/{{class_num}}/{{i}}">{{i}}</a></td></tr>
 				{% endfor %}
-
+                                <hr>
 				</table>
                                 <ul class="pagination" id="pageNavPosition"></ul> 
 				{% else %}
   				<p>Nothing to display.</p>
   				{% endif %}
-
+                                </div>
             			</div><div class="col-md-1"></div>
       				<div class="col-md-3" style= " background-color:#cad3d9; margin-top:8%"><br/>
 				<strong>Welcome {{reviewer.user.username}}</strong><br><br>
@@ -42,14 +42,8 @@
     	</div>
    </div>
 </div>
-                            </div>
-				
-    
-    			</div>
-  </div>
-   </div>
-
-                                <script src="{% static 'js/paging.js' %}"></script>
+                            
+<script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
  var pager = new Pager('tablepaging', 5);
 pager.init();

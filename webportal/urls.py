@@ -88,9 +88,9 @@ urlpatterns = patterns(
 )
 
 
-if settings.DEBUG is False:
+if settings.DEBUG:
     # static files (images, css, javascript, etc.)
-    urlpatterns += patterns('',
+    urlpatterns += patterns(
         'django.views.static',
         (r'^media/(?P<path>.*)$',
          'serve',
