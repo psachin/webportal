@@ -4,13 +4,13 @@
    contain the root `toctree` directive.
 
 
-Webportal
-=========
+Aakash School Education
+=======================
 
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 5
 
    userguide
 
