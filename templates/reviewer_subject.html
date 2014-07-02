@@ -12,6 +12,7 @@
 				<table class="table table-hover" id="tablepaging">	
 				{% for i in uploads %}   				
 			        <tr><td><a href="/reviewer/profile/{{class_num}}/{{i}}/">{{i}}</a></td></tr>
+
 				{% endfor %}
                                 <hr>
 				</table>
@@ -42,7 +43,7 @@
     	</div>
    </div>
 </div>
-                            
+
 <script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
  var pager = new Pager('tablepaging', 5);
