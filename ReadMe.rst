@@ -1,8 +1,8 @@
-=========
-Webportal
-=========
+=======================
+Aakash School Education
+=======================
 
-A **Webportal** to provide education material to the students.
+A **Webportal** to provide educational content to the students.
 
 (Summer Internship 2014, Indian Institute of Technology, Bombay)
 
