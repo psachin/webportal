@@ -274,7 +274,14 @@ class ContributorUploadForm(forms.ModelForm):
         if self.cleaned_data['pdf']:
             pdf = self.cleaned_data['pdf']
             print pdf.content_type.split('/')[1]
-            if pdf.content_type.split('/')[1] == "pdf":
+            if pdf.content_type.split('/')[1] in (
+                "pdf",
+                "vnd.oasis.opendocument.presentation",
+                "vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "vnd.oasis.opendocument.text",
+                "vnd.ms-powerpoint",
+                "vnd.openxmlformats-officedocument.presentationml.presentation"):
+
                 if pdf._size/(1024*1024) <= 20:  # < 20MB
                     return pdf
                 else:
