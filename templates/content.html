@@ -48,19 +48,9 @@
            <td><strong>  {{i.name}}  </strong></a>
            </p>
            </td>
-                    {% if user.is_authenticated %}
-                    {% if user.contributor %}
-                    <td><a href="/contributor/profile/{{i.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}"><strong>{{i.topic}}</strong></a>
-                    </td>
-                    {% elif user.reviewer %}
-                    <td><a href="/reviewer/profile/{{i.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}"><strong>{{i.topic}}</strong></a>
-                    </td>
-                    {% endif %}
                     
-                    {% else %}
                     <td><strong><a href="/content/{{i.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}">{{i.topic}}</strong></a>
                     </td>
-                    {% endif %}
                     
                     <td class="lead" text-align="justify">
                       {{i.summary|safe|linebreaks|truncatewords:10}}

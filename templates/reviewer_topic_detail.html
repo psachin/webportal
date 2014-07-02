@@ -7,9 +7,13 @@
             <div class="row">
         	<div class="col-md-8" style= " background-color:#d5dce1; margin-top:8%">
 		    <h4> class {{class_num}}-{{sub}}-{{topics}}</h4>
+                        Language-{{subject.language}}
 		        <div class="row">
 			    <div class="col-md-12" style=" margin-left:10px;">
-				<b><i class="fa fa-comments"></i>&nbsp; &nbsp;Summary</b>-{{subject.summary}}
+				<b><blockquote>
+				<p>{{subject.summary|safe|linebreaks}}</p>
+				<footer><strong>{{ subject.contributor}} ,{{subject.uploaded_on}}</strong></footer>
+                                </blockquote>
 	  		    </div>
  			</div>
 		</div>
