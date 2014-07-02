@@ -6,20 +6,22 @@
   	<div class="col-md-12">
    		 <div class="row">
       				<div class="col-md-8" style= " background-color:#d5dce1; margin-top:8%">
-				{% if uploads %}
-                                <h3><i class="fa fa-comments"></i>&nbsp; &nbsp;Subjects corresponding to class {{class_num}}</h3>
-				<table class="table table-hover" id="tablepaging" class="yui">	
-				{% for i in uploads %}
-				<table class="table table-hover">    				
-			        <td><a href="/contributor/profile/{{class_num}}/{{i}}">{{i}}</a></td><hr>
+                                <h3>Subjects corresponding to class {{class_num}}</h3>
+                                {% if uploads %}
+				<div class="table-responsive">
+                                <table class="table table-hover" id="uploads">    
+				{% for i in uploads %}				
+			        <tr><td><a href="/contributor/profile/{{class_num}}/{{i}}">{{i}}<hr></a></td></tr>
 				{% endfor %}
+                                <hr>
 				</table>
 				<ul class="pagination" id="pageNavPosition"></ul> 
 				{% else %}
-  				<p>Nothing to display.</p>
+  				<p style="padding-top:22%">Nothing to display.</p>
   				{% endif %}
                                  
-  			</div><div class="col-md-1"></div>
+                                </div></div>
+  			        <div class="col-md-1"></div>
       				<div class="col-md-3" style= " background-color:#cad3d9; margin-top:8%"><br/>
 				<strong><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Welcome {{contributor.user.username}}</strong><br><br>
                                 {% if contributor.picture %}
@@ -42,15 +44,16 @@
 				
     			</div>
   </div>
-   </div>
-
+   
+</div>
 <script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
- var pager = new Pager('tablepaging', 5);
+ var pager = new Pager('uploads', 5);
 pager.init();
 pager.showPageNav('pager', 'pageNavPosition');
-pager.showPage(1);
+pager.showPage(1); 
 </script>
+
 {% endblock content %}
                  
 <i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;
