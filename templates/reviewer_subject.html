@@ -11,7 +11,8 @@
                                 <div class="table-responsive">
 				<table class="table table-hover" id="tablepaging">	
 				{% for i in uploads %}   				
-			        <tr><td><a href="/reviewer/profile/{{class_num}}/{{i}}">{{i}}</a></td></tr>
+			        <tr><td><a href="/reviewer/profile/{{class_num}}/{{i}}/">{{i}}</a></td></tr>
+
 				{% endfor %}
                                 <hr>
 				</table>
@@ -33,7 +34,7 @@
 				<a href= "/reviewer/past/approvals/">Past Approvals </a><br><br>
 				<a href="/reviewer/profile/edit/">
     				<button id='Edit-Profile-button' class="btn btn-primary" type='submit' ><span>Edit Profile</span></button></a><br/><br/>
-  				<a href="/user/password/change">
+  				<a href="/user/password/change/">
    			        <button id='Password-reset-button'  type='submit' class="btn btn-primary"><span>Change Password</span></button></a><br><br>
   
                           	</div>
@@ -42,7 +43,7 @@
     	</div>
    </div>
 </div>
-                            
+
 <script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
  var pager = new Pager('tablepaging', 5);

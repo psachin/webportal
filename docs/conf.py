@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-#needs_sphinx = '1.0'
+needs_sphinx = '1.2'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -47,7 +47,7 @@ source_encoding = 'utf-8-sig'
 master_doc = 'index'
 
 # General information about the project.
-project = u'webportal'
+project = u'Aakash School Education'
 copyright = u'2014, Indian Institute of Technology Bombay'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -102,7 +102,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+html_theme = 'nature'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -200,8 +200,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'webportal.tex', u'webportal Documentation',
-   u'interns2014', 'manual'),
+  ('index', 'webportal.tex', u'Aakash School Education',
+   u'Summer Internship 2014', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -230,8 +230,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'webportal', u'webportal Documentation',
-     [u'interns2014'], 1)
+    ('index', 'ASE', u'Aakash School Education',
+     [u'Summer Internship 2014'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -244,8 +244,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'webportal', u'webportal Documentation',
-   u'interns2014', 'webportal', 'One line description of project.',
+  ('index', 'ASE', u'Aakash School Education',
+   u'interns2014', 'webportal', 'Portal for contributing education content for school education.',
    'Miscellaneous'),
 ]
 

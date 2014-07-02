@@ -64,8 +64,8 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = 'media'
-
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media/')
+# MEDIA_ROOT = 'media'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
@@ -75,6 +75,8 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
+
+#STATIC_ROOT = '/var/www/webportal/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(__file__), 'static/')
 
 # URL prefix for static files.
@@ -126,7 +128,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    'templates',
+    #'templates',
+    TEMPLATE_PATH,
 )
 
 INSTALLED_APPS = (

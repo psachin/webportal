@@ -10,7 +10,7 @@
 				<div class="table-responsive">
 				<table class="table table-hover">
 				 <tr class="success">
-                                 
+                                    <td><strong>Class</strong></td>
     				    <td><strong>subject</strong></td>
     				    <td><strong>Topic</strong></td>
 			            <td><strong>Summary</strong></td>
@@ -21,7 +21,8 @@
   				 </tr>
   				{% for i in past_approvals %}
 				 <tr class="active">
-                          
+
+                                 <td><strong>{{i.class_number_number}}</strong></td>
    				 <td><strong>{{i.name}}</strong>
 				    </td>
 			
@@ -31,7 +32,7 @@
 				    
 				     <td>
 				    {% if i.summary|length >= 100 %}
-				      {{i.summary|truncatewords:10}}<a href="/reviewer/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/detail">read more ...</a>
+				      {{i.summary|truncatewords:10}}<a href="/reviewer/profile/{{i.class_number.class_number}}/{{i.name}}/{{i.topic}}/{{i.id}}/detail/">read more ...</a>
 				    {% else %}
 					{{i.summary}}
 				    {% endif %}

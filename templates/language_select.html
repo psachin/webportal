@@ -7,10 +7,10 @@
 <div style="width:230px; margin:0 auto;">
 		                <div ul class="dropdown" align="center"> 
 		       <a href="#" class="dropdown-toggle" 
-		          data-toggle="dropdown" align="center"><strong>Language</strong><b class="caret"></b></a>
+		          data-toggle="dropdown" align="center"><font size="5"><strong>Language</strong></font><b class="caret"></b></a>
 		       <ul class="dropdown-menu">
 			 {% for i in languages %}
-			 <li><a href="/content/{{i}}/">{{i}}</a></li>
+			 <li><a href="/content/{{i}}/"><font size="4">{{i|capfirst}}</font></a></li>
 			 {% endfor %}
 		       </ul>
 		     </ul>
