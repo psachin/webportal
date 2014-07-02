@@ -32,37 +32,28 @@
                  <td><strong>{{page.name}}</strong></a>
                       </p>
                     </td>
-                   {% if user.is_authenticated %}
-                    {% if user.contributor %}
-                    <td><a href="/contributor/profile/{{page.class_number}}/{{page.name}}/{{page.topic}}/{{page.id}}"><strong>{{page.topic}}</strong></a>
-                    </td>
-                    {% elif user.reviewer %}
-                    <td><a href="/reviewer/profile/{{page.class_number}}/{{page.name}}/{{page.topic}}/{{page.id}}"><strong>{{page.topic}}</strong></a>
-                    </td>
-                    {% endif %}
                     
-                    {% else %}
-                  
-                    <td><strong>{{page.topic}}</strong></a>
+                  <td><strong><a href="/content/{{page.class_number}}/{{page.name}}/{{page.topic}}/{{page.id}}">{{page.topic}}</a></strong>
                     </td>
-                    {% endif %}
+                    
+                    
                     
                     <td class="lead" text-align="justify">
-                      {{page.summary|safe|linebreaks}}
+                      {{page.summary|safe|linebreaks|truncatewords:10}}
                     </td>
                     
                     <td>
                     {% if page.pdf %}
                       <a href="/media/{{page.pdf}}"><i class="fa fa-file-pdf-o fa-2x"></i></a>
-                        {% else %}
+                        {% else %}<i class="fa fa-ban fa-2x"></i>
                     {% endif %} </td><td>
                     {% if page.video %}
                     <a href="/media/{{page.video}}"><i class="fa fa-file-video-o fa-2x"></i></a>
-                    {% else %}
+                    {% else %}<i class="fa fa-ban fa-2x"></i>
                     {% endif %} </td><td>
                     {% if page.animation %}
                     <a href="/media/animation/{{page.animation}}"><i class="fa fa-file-image-o fa-2x"></i></a>
-                    {% else %}
+                    {% else %}<i class="fa fa-ban fa-2x"></i>
                     {% endif %} 
                     </td>         
                   </tr>
@@ -108,23 +99,22 @@
                     </td>
                     {% endif %}
                     <td class="lead" text-align="justify">
-                      {{page.summary|safe|linebreaks}}
+                      {{page.summary|safe|linebreaks|truncatewords:10}}
                     </td>
                     
                     <td>
                     {% if page.pdf %}
-                      <a href="/media/{{page.pdf}}"><img src="{% static 'doc.jpg' %}" height="50" width="50"
-                    class="img-rounded img-responsive"></a>
-                        {% else %}
+                      <a href="/media/{{page.pdf}}"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+                        {% else %}<i class="fa fa-ban fa-2x"></i>
                     {% endif %} </td><td>
+
                     {% if page.video %}
-                    <a href="/media/{{page.video}}"><img src="{% static 'video.jpg' %}" height="50" width="50"
-                    class="img-rounded img-responsive"></a>
-                    {% else %}
+                    <a href="/media/{{page.video}}"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+                        {% else %}<i class="fa fa-ban fa-2x"></i>
                     {% endif %} </td><td>
                     {% if page.animation %}
-                    <a href="/media/animation/{{page.animation}}">ani</a>
-                    {% else %}
+                    <a href="/media/animation/{{page.animation}}"><i class="fa fa-file-image-o fa-2x"></i></a>
+                    {% else %}<i class="fa fa-ban fa-2x"></i>
                     {% endif %} 
                     </td>         
                   </tr>

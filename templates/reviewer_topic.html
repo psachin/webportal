@@ -70,6 +70,11 @@
 				    </td>
 				</tr>
 				{% endfor %}</table>
+                                <ul class="pagination" id="pageNavPosition"></ul> 
+				{% else %}
+  				<p style="padding-top:22%">Nothing to display.</p>
+  				{% endif %}
+
 				</div>
 			        </div>
     				
@@ -97,19 +102,12 @@
        </div>
     </div>
 </div>
-                            </div>
-<ul class="pagination" id="unordered-code-list"></ul> 
-				{% else %}
-  				<p>Nothing to display.</p>
-  				{% endif %}
-                                  </div>
-  </div>
-   </div>
-    			
+                            
+		
 
 <script src="{% static 'js/paging.js' %}"></script>
 <script type="text/javascript">
- var pager = new Pager('tablepaging', 5);
+ var pager = new Pager('uploads', 5);
 pager.init();
 pager.showPageNav('pager', 'pageNavPosition');
 pager.showPage(1);
