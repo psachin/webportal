@@ -6,11 +6,13 @@
       				<div class="col-md-8" style= " background-color:#d5dce1; margin-top:8%">
 				<h4> {{topics}} ({{sub}})</h4>
                                 <h6> Class: {{class_num}}</h6></div></div><br>
+                                Language-{{subject.language}}
 				<div class="row">
 				<div class="col-md-8">
 				<blockquote>
 				<p>{{subject.summary|safe|linebreaks}}</p>
 				<footer><strong>{{ subject.contributor}} ,{{subject.uploaded_on}}</strong></footer>
+                                <footer>reviewed by - {{subject.reviewer.all}}</footer>
                                 </blockquote>
                                 </div>
                                      <div class="col-md-1"></div>

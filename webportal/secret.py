@@ -1,4 +1,4 @@
-DEBUG_VALUE = False
+DEBUG_VALUE = True
 
 DB_ENGINE = 'django.db.backends.sqlite3'
 DB_NAME = 'webportal.db'
