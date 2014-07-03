@@ -87,7 +87,7 @@ urlpatterns = patterns(
     url(r'^developer_team/$','webapp.views.developer_team'),
 )
 
-if settings.DEBUG is False:
+if settings.DEBUG:
     # static files (images, css, javascript, etc.)
     urlpatterns += patterns(
         'django.views.static',
