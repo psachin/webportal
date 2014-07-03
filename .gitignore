@@ -1,7 +1,7 @@
 # Garbage files
 *~
 *.pyc
-
+*.swp
 # Django media
 media/
 
