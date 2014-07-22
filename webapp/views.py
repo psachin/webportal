@@ -32,7 +32,10 @@ def index(request):
     num_subject = Subject.objects.values_list('name', flat=True).distinct()
     filter_review = Subject.objects.filter(review__gte=3)
     latest_uploads = filter_review.order_by('-uploaded_on')[:5]
-    print latest_uploads[0].reviewer
+    if latest_uploads:
+        print latest_uploads[0].reviewer
+    else:
+        print "No uploads found."
     count = len(latest_uploads_all)
     count_subject = len(num_subject)
     count_class = len(num_class)
