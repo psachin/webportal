@@ -12,7 +12,7 @@ Clone
 - Make sure your Internet is working.
 - Clone this repo by typing ::
 
-    git clone https://github.com/khushbu14/webportal.git
+    git clone https://github.com/psachin/webportal.git
 
 
 Installation
@@ -79,7 +79,7 @@ Deploy on server
 - Make sure your Internet is working.
 - Clone this repo by typing ::
 
-    git clone https://github.com/khushbu14/webportal.git
+    git clone https://github.com/psachin/webportal.git
 
 - Collect static files(Required by Django's admin interface) ::
 
